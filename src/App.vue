@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="container-fluid">
-    <h1 class="text-center border-bottom">Free API fast check</h1>
+    <h1 class="text-center border-bottom">Free API fast check: {{ linkTitle }}</h1>
     <div class="row">
       <div class="col-12 col-md-4 mb-4 mb-md-0">
         <Home @iframeInfo="addIframe" />
@@ -20,6 +20,7 @@ export default {
   name: 'App',
   data(){
     return {
+      linkTitle: 'Cat Facts',
       linkPick: 'https://alexwohlbruck.github.io/cat-facts/'
     }
   },
@@ -29,9 +30,8 @@ export default {
   },
   methods: {
     addIframe(payload){
-      console.log(payload.info);
       this.linkPick = payload.info;
-      console.log(this.linkPick);
+      this.linkTitle = payload.titleInfo;
     }
   }
 }

@@ -3,7 +3,7 @@
     <input placeholder="Search by Description" type="text" class="form-control mb-2" v-model="searchByTitle">
     <div style="height:89vh; overflow-y: auto;">
       <div id="top"></div>
-      <ul @click="showInfo(data.Link)" class="list-group clickable" v-for="(data,index) in filteredLinks()" :key="index">
+      <ul @click="showInfo(data.Link,data.API)" class="list-group clickable" v-for="(data,index) in filteredLinks()" :key="index">
         <li class="list-group-item mb-1">
           <span>API: {{data.API}}</span><br>
           <span>Description: {{data.Description}}</span><br>
@@ -38,13 +38,11 @@ export default {
     })
   },
   methods: {
-    showInfo(info){
-      console.log(info);
-      this.$emit('iframeInfo',{ info:info })
+    showInfo(info,titleInfo){
+      this.$emit('iframeInfo',{ info:info, titleInfo:titleInfo })
     },
     filteredLinks(){
       return this.info.filter(infoTitle => {
-        // console.log(infoTitle.API);
         return infoTitle.Description.toLowerCase().match(this.searchByTitle)
       })
     }
