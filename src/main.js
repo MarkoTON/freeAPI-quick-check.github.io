@@ -5,6 +5,11 @@ import App from './App'
 
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
+import VueSmoothScroll from 'vue2-smooth-scroll'
+
+// Using SmootScroll
+Vue.use(VueSmoothScroll)
+
 // Install BootstrapVue
 Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
