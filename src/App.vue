@@ -1,0 +1,42 @@
+<template>
+  <div id="app" class="container-fluid">
+    <h1 class="text-center border-bottom">Free API fast check</h1>
+    <div class="row">
+      <div class="col-4 col-md-4">
+        <Home @iframeInfo="addIframe" />
+      </div><!-- col-2 col-md-3 -->
+      <div class="col-8 col-md-8">
+        <LinkValue :linkIframe="linkPick" />
+      </div><!-- col-2 col-md-3 -->
+    </div><!-- row -->
+  </div>
+</template>
+
+<script>
+import Home from './components/Home'
+import LinkValue from './components/LinkValue'
+
+export default {
+  name: 'App',
+  data(){
+    return {
+      linkPick: 'https://alexwohlbruck.github.io/cat-facts/'
+    }
+  },
+  components: {
+    Home,
+    LinkValue
+  },
+  methods: {
+    addIframe(payload){
+      console.log(payload.info);
+      this.linkPick = payload.info;
+      console.log(this.linkPick);
+    }
+  }
+}
+</script>
+
+<style>
+
+</style>
